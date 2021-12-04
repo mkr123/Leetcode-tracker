@@ -13,7 +13,11 @@ export default function ProblemEntry(props){
   const handleClick = ()=>{
     currContext.setCurrent(props.data)
   }
-
+  useEffect(()=>{
+    if(currContext.current!==undefined && currContext.current.leetcodeID===props.data.leetcodeID){
+      setStatus(currContext.current.status)
+    }
+  },[currContext.current])
   const handleFavourite = (e)=>{
    setFaver(!faver);
    axios.put("/favourite",null,{params:{favourite:faver, title:props.data.Title}});

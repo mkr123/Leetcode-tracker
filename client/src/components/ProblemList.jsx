@@ -4,6 +4,7 @@ import {ProblemContext} from "../index.jsx"
 //import AddProblem from "./AddProblem.jsx";
 import "./ProblemList.css";
 import axios from 'axios';
+
 export default function ProblemList(props){
 let problemContext = useContext(ProblemContext);
 
@@ -20,6 +21,7 @@ let problemContext = useContext(ProblemContext);
          {problemContext.problems.map((problem)=>{
            return <ProblemEntry data={problem} key={problem._id}/>
          })}
+
     </div>
   )
 }

@@ -12,7 +12,10 @@ app.use(express.static(__dirname + '/../client/dist/'));
 console.log(__dirname + '/client/dist/')
 console.log(Problems);
 app.get('/problems', function (req, res) {
-  Problems.find().limit(10).sort({leetcodeID:-1}).then((data) => {
+  let page = req.query.page || 0;
+  let count = req.query.count || 20;
+  //let filter = req.query.sort
+  Problems.find().skip(page*count).limit(count).sort({leetcodeID:1}).then((data) => {
 
     res.send(data);
   });
@@ -32,6 +35,13 @@ app.put('/favourite',(req,res)=>{
   let value = (req.query.favourite==="true")?true:false;
   let title = req.query.title;
   Problems.update({"Title":req.query.title},{$set:{"favourite":!value}}).then(()=>{
+    res.sendStatus(204);
+  })
+})
+app.put('/status',(req,res)=>{
+  let value = req.query.status;
+  let title = req.query.title;
+  Problems.update({"Title":req.query.title},{$set:{"status":value}}).then(()=>{
     res.sendStatus(204);
   })
 })
