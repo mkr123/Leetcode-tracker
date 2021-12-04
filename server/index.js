@@ -14,13 +14,22 @@ console.log(Problems);
 app.get('/problems', function (req, res) {
   let page = req.query.page || 0;
   let count = req.query.count || 20;
-  //let filter = req.query.sort
-  Problems.find().skip(page*count).limit(count).sort({leetcodeID:1}).then((data) => {
-
-    res.send(data);
-  });
-
+  let filter;
+  if(req.query.filter!==undefined){
+     filter = JSON.parse(req.query.filter)
+  }
+  if(req.query.filter!==undefined && filter.length!==0){
+    Problems.find({Difficulty:{$in:filter}}).skip(page*count).limit(count).sort({leetcodeID:1}).then((data) => {
+      res.send(data);
+    })
+  }
+  else {
+    Problems.find().skip(page*count).limit(count).sort({leetcodeID:1}).then((data) => {
+      res.send(data);
+    });
+}
 });
+
 app.get('/search',(req,res)=>{
   let word = `\"${req.query.input}\"`;
   Problems.find({$text:{$search:word}}).then((data)=>{

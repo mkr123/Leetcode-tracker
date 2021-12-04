@@ -1,11 +1,12 @@
 import React, { useState, useEffect,useContext} from 'react';
-import "./ProblemEntry.css"
 import {IoMdHeart, IoMdHeartEmpty} from 'react-icons/Io';
 import {RiTodoLine} from "react-icons/Ri";
 import {AiOutlineHourglass} from "react-icons/Ai";
 import {ImCheckmark} from "react-icons/Im";
 import axios from "axios";
 import {ProblemContext} from "../index.jsx";
+import { Progress } from 'antd';
+import "./ProblemEntry.css"
 
 export default function ProblemEntry(props){
   const [faver, setFaver] = useState(props.data.favourite)
@@ -31,14 +32,31 @@ export default function ProblemEntry(props){
   } else {
     statusIcon = <ImCheckmark />
   }
+  const act = props.data.Acceptance.replace("%","")
+
+  let diffstyle;
+  if(props.data.Difficulty==="Easy"){
+    diffstyle={
+      color: `#13c2c2`
+    };
+  }
+  if(props.data.Difficulty==="Medium"){
+    diffstyle={
+      color: `#faad14`
+    };
+  }if(props.data.Difficulty==="Hard"){
+    diffstyle={
+      color: `#f5222d`
+    };
+  }
 
   return (
     <div className = "ProblemEntry" onClick={handleClick}>
        <div>{statusIcon}</div>
        <div>{props.data.leetcodeID}. {props.data.Title}</div>
        <div>{props.data.solveTime}</div>
-       <div>{props.data.Difficulty}</div>
-       <div>{props.data.Acceptance}</div>
+       <div style={diffstyle}>{props.data.Difficulty }</div>
+       <div><Progress percent={+act} showInfo={false} />{props.data.Acceptance}</div>
        <div onClick={handleFavourite}>{faver?<IoMdHeart />:<IoMdHeartEmpty />}</div>
     </div>
 

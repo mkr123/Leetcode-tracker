@@ -8,20 +8,20 @@ import 'antd/dist/antd.css';
 export default function Filter (props){
   const OPTIONS = ['Easy', 'Medium', 'Hard'];
   const [selectedItems, setSelectedItems] = useState(OPTIONS);
-  // state = {
-  //   selectedItems: [],
-  // };
+  const problemsContext = useContext(ProblemContext);
 
   const handleChange = selectedItems => {
-    // axios.get('/problems',{params:{
-    //   filter:selectedItems
-    // }})
+    console.log(JSON.stringify(selectedItems))
+    axios.get('/problems',{params:{
+      filter:JSON.stringify(selectedItems)
+    }}).then((res)=>{
+      console.log(res.data);
+      problemsContext.setProblems(res.data)
+    })
     setSelectedItems(selectedItems)
-    this.setState({ selectedItems });
 
   };
 
-   // const { selectedItems } = selectedItems;
     const filteredOptions = OPTIONS.filter(o => !selectedItems.includes(o));
     return (
       <Select

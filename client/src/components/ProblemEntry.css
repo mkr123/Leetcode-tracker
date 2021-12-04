@@ -5,3 +5,6 @@
   justify-items: start;
   align-items:baseline;
 }
+.ant-progress-success-bg .ant-progress-bg  {
+  color:chartreuse
+}

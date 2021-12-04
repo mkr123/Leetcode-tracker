@@ -12,12 +12,15 @@ export const ProblemContext = createContext();
 const App = () => {
   const [problems, setProblems] = useState([]);
   const [current, setCurrent] = useState();
+  const [length, setLength] = useState(1407);
+
   useEffect(() => {
     axios.get('/problems').then((res) => {
       setProblems(res.data);
     })
     //
   }, []);
+
   const handleLinkClick = () => {
     if (current.Title === undefined) {
       return;
@@ -48,9 +51,10 @@ const App = () => {
   }
 
   return (
-    <ProblemContext.Provider value={{ problems, setProblems, current, setCurrent }}>
-      <div>
-        <div>Leetcode Problem Tracker</div>
+    <ProblemContext.Provider value={{ problems, setProblems, current, setCurrent, setLength}}>
+      <div id="App container">
+        <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png"/>
+        <h1>Leetcode Problem Tracker</h1>
         <div id="display">
           <div id="link">{current === undefined ? "Please select a problem" : `You select`}</div>
           <Button type="link" onClick={handleLinkClick}>{current === undefined ? null : current.Title}</Button>
@@ -62,7 +66,7 @@ const App = () => {
         <Pagination
         defaultCurrent={1}
         defaultPageSize={20}
-        total={1407}
+        total={length}
         showQuickJumper={true}
         showSizeChanger={false}
         onChange={onPageChange} />
