@@ -31,7 +31,7 @@ export default function Filter (props){
         placeholder="filter difficulty here"
         value={selectedItems}
         onChange={handleChange}
-        style={{ width: '30%' }}
+        style={{ width: '50%' }}
       >
         {filteredOptions.map(item => (
           <Select.Option key={item} value={item}>

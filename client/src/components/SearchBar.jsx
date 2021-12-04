@@ -11,10 +11,16 @@ export default function SearchBar(props){
   let problemContext = useContext(ProblemContext);
   const { Search } = Input;
   const onSearch = value => {
+    if(value.length === 0){
+      axios.get('/problems').then((res) => {
+        problemContext.setProblems(res.data);
+      })
+    } else {
     axios.get("/search",{params:{input:value}}).then((res)=>{
       console.log(res.data);
       problemContext.setProblems(res.data);
     })
+  }
   };
   const handleChange = (value)=>{
     console.log(value)

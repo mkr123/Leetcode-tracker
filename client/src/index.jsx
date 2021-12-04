@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar.jsx";
 import { useState, useEffect, useContext, createContext } from 'react';
 import { Button } from 'antd';
 import { Pagination } from 'antd';
+import { Tooltip, Progress } from 'antd';
 import Filter from "./components/Filter.jsx";
 import './index.css'
 import 'antd/dist/antd.css';
@@ -54,11 +55,13 @@ const App = () => {
   return (
     <ProblemContext.Provider value={{ problems, setProblems, current, setCurrent, setLength}}>
       <div id="AppContainer">
-
         <h1><img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png"/>Leetcode Problem Tracker</h1>
+
+
+
         <div id="display">
           <h2 id="link">{current === undefined ? "Please select a problem" : `You select`}</h2>
-          <Button type="link" onClick={handleLinkClick}>{current === undefined ? null : current.Title}</Button>
+          <Button type="link" onClick={handleLinkClick} id="linkBtn">{current === undefined ? null : current.Title}</Button>
           {(current !== undefined && current.status === 1) ? <Button onClick={handleSolveClick}>Solved</Button> : null}
         </div>
         <div id = "inputArea">
