@@ -14,12 +14,15 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-loader": "^8.2.1",
+    "css-loader": "^5.2.7",
+    "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "antd": "^4.17.2",
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
     "bootstrap": "^3.3.7",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
@@ -28,6 +31,7 @@
     "mysql": "^2.18.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-icons": "^4.3.1",
     "underscore": "^1.12.0"
   }
 }
