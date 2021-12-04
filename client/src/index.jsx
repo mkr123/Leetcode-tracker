@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar.jsx";
 import { useState, useEffect, useContext, createContext } from 'react';
 import { Button } from 'antd';
 import { Pagination } from 'antd';
+import Filter from "./components/Filter.jsx";
 import 'antd/dist/antd.css';
 export const ProblemContext = createContext();
 const App = () => {
@@ -28,8 +29,8 @@ const App = () => {
         ...current,
         status: 1
       })
-      window.open(`https://leetcode.com/problems/${problemURL}`)
     }
+    window.open(`https://leetcode.com/problems/${problemURL}`,"_blank")
   }
   const handleSolveClick = () => {
     if (current.status === 1) {
@@ -45,6 +46,7 @@ const App = () => {
       setProblems(res.data);
     })
   }
+
   return (
     <ProblemContext.Provider value={{ problems, setProblems, current, setCurrent }}>
       <div>
@@ -55,6 +57,7 @@ const App = () => {
           {(current !== undefined && current.status === 1) ? <Button onClick={handleSolveClick}>Solved</Button> : null}
         </div>
         <SearchBar />
+        <Filter />
         <ProblemList />
         <Pagination
         defaultCurrent={1}

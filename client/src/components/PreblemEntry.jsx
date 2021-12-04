@@ -5,7 +5,8 @@ import {RiTodoLine} from "react-icons/Ri";
 import {AiOutlineHourglass} from "react-icons/Ai";
 import {ImCheckmark} from "react-icons/Im";
 import axios from "axios";
-import {ProblemContext} from "../index.jsx"
+import {ProblemContext} from "../index.jsx";
+
 export default function ProblemEntry(props){
   const [faver, setFaver] = useState(props.data.favourite)
   const [status, setStatus] =useState(props.data.status)

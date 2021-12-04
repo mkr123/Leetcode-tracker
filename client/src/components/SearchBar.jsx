@@ -5,6 +5,7 @@ import {ProblemContext} from "../index.jsx"
 import {  Input, Space  }  from 'antd';
 import 'antd/dist/antd.css';
 import "./SearchBar.css";
+import { Select, Option } from 'antd';
 
 export default function SearchBar(props){
   let problemContext = useContext(ProblemContext);
@@ -15,9 +16,14 @@ export default function SearchBar(props){
       problemContext.setProblems(res.data);
     })
   };
+  const handleChange = (value)=>{
+    console.log(value)
+  }
   return(
     <div id="SearchContainer">
       <Search placeholder="Search problem title" onSearch={onSearch} enterButton />
+
+
     </div>
 
 
