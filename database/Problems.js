@@ -3,13 +3,13 @@ const db = require('./index');
 mongoose.Promise = global.Promise;
 
 const mvpSchema = new mongoose.Schema({
-  id:Number,
   leetcodeID:Number,
-  title:String,
-  acceptance:String,
-  difficulty:String,
-  solved:Boolean,
-
+  Title:String,
+  Acceptance:String,
+  Difficulty:String,
+  solvedTime:String,
+  status:Number,
+  favourite:Boolean
 }
 );
 
