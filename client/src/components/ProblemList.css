@@ -1,7 +1,16 @@
 #topLineContainer {
   display: inline-grid;
   grid-column-gap: 5px;
-  grid-template-columns: [col1-start] 53px [col1-col2] 300px repeat(5,158px [col3-start]);
+  grid-template-columns: [col1-start] 100px [col1-col2] 300px repeat(3,150px [col3-start]);
   justify-items: start;
   align-items:baseline;
+}
+#favor{
+  justify-self: center;
+}
+#ProblemListContainer {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }

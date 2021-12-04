@@ -7,6 +7,7 @@ import { useState, useEffect, useContext, createContext } from 'react';
 import { Button } from 'antd';
 import { Pagination } from 'antd';
 import Filter from "./components/Filter.jsx";
+import './index.css'
 import 'antd/dist/antd.css';
 export const ProblemContext = createContext();
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
     if (current.Title === undefined) {
       return;
     }
-    let problemURL = current.Title.toLowerCase().replaceAll(' ', '-');
+    let problemURL = current.Title.toLowerCase().replaceAll("(","").replaceAll(")","").replaceAll(",","").replaceAll(' ', '-');
     if (current.status === 0) {
       axios.put("/status", null, { params: { status: 1, title: current.Title } })
       setCurrent({
@@ -52,16 +53,19 @@ const App = () => {
 
   return (
     <ProblemContext.Provider value={{ problems, setProblems, current, setCurrent, setLength}}>
-      <div id="App container">
-        <img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png"/>
-        <h1>Leetcode Problem Tracker</h1>
+      <div id="AppContainer">
+
+        <h1><img src="https://leetcode.com/_next/static/images/logo-ff2b712834cf26bf50a5de58ee27bcef.png"/>Leetcode Problem Tracker</h1>
         <div id="display">
-          <div id="link">{current === undefined ? "Please select a problem" : `You select`}</div>
+          <h2 id="link">{current === undefined ? "Please select a problem" : `You select`}</h2>
           <Button type="link" onClick={handleLinkClick}>{current === undefined ? null : current.Title}</Button>
           {(current !== undefined && current.status === 1) ? <Button onClick={handleSolveClick}>Solved</Button> : null}
         </div>
+        <div id = "inputArea">
         <SearchBar />
         <Filter />
+        </div>
+
         <ProblemList />
         <Pagination
         defaultCurrent={1}

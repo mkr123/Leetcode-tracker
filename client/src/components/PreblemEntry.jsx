@@ -26,11 +26,11 @@ export default function ProblemEntry(props){
   }
   let statusIcon;
   if(status === 0){
-    statusIcon = <RiTodoLine />
+    statusIcon = <RiTodoLine color="#ff7a45" fontSize="1.5em"/>
   } else if(status === 1){
-    statusIcon = <AiOutlineHourglass />
+    statusIcon = <AiOutlineHourglass color="#40a9ff" fontSize="1.5em"/>
   } else {
-    statusIcon = <ImCheckmark />
+    statusIcon = <ImCheckmark color="#52c41a" fontSize="1.5em"/>
   }
   const act = props.data.Acceptance.replace("%","")
 
@@ -53,11 +53,10 @@ export default function ProblemEntry(props){
   return (
     <div className = "ProblemEntry" onClick={handleClick}>
        <div>{statusIcon}</div>
-       <div>{props.data.leetcodeID}. {props.data.Title}</div>
-       <div>{props.data.solveTime}</div>
+       <div className="listTitle">{props.data.leetcodeID}. {props.data.Title}</div>
        <div style={diffstyle}>{props.data.Difficulty }</div>
-       <div><Progress percent={+act} showInfo={false} />{props.data.Acceptance}</div>
-       <div onClick={handleFavourite}>{faver?<IoMdHeart />:<IoMdHeartEmpty />}</div>
+       <Progress percent={+act}  />
+       <div className="listFavor" onClick={handleFavourite}>{faver?<IoMdHeart color="red" fontSize="1.5em" />:<IoMdHeartEmpty color="red" fontSize="1.5em"/>}</div>
     </div>
 
 

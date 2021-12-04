@@ -23,13 +23,15 @@ export default function Filter (props){
   };
 
     const filteredOptions = OPTIONS.filter(o => !selectedItems.includes(o));
+    let filtercolor;
+
     return (
       <Select
         mode="multiple"
         placeholder="filter difficulty here"
         value={selectedItems}
         onChange={handleChange}
-        style={{ width: '15%' }}
+        style={{ width: '30%' }}
       >
         {filteredOptions.map(item => (
           <Select.Option key={item} value={item}>

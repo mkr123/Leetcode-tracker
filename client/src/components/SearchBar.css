@@ -11,8 +11,8 @@
 .ant-input-group{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 30%;
+  justify-content: space-evenly;
+  width: 80%;
 
 
 }

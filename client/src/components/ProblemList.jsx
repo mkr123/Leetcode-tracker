@@ -13,10 +13,9 @@ let problemContext = useContext(ProblemContext);
        <div id="topLineContainer">
             <div>status</div>
             <div>title</div>
-            <div>time</div>
             <div>difficulty</div>
             <div>acceptance</div>
-            <div>favourite</div>
+            <div id="favor">favourite</div>
          </div>
          {problemContext.problems.map((problem)=>{
            return <ProblemEntry data={problem} key={problem._id}/>

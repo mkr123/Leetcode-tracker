@@ -1,10 +1,16 @@
 .ProblemEntry {
   display: inline-grid;
   grid-column-gap: 5px;
-  grid-template-columns: [col1-start] 53px [col1-col2] 300px repeat(5,158px [col3-start]);
+  grid-template-columns: [col1-start] 100px [col1-col2] 300px repeat(3,150px [col3-start]);
   justify-items: start;
-  align-items:baseline;
+  align-items:center;
 }
-.ant-progress-success-bg .ant-progress-bg  {
-  color:chartreuse
+.listTitle{
+  align-self: flex-start;
+}
+.listFavor{
+  justify-self: center;
+}
+.ant-progress-outer {
+ width: 70%;
 }
